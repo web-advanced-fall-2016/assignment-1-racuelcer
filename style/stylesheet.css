@@ -98,7 +98,8 @@ body{
    width: 15px;
    height: 15px;
    margin: 5px 5px;
-   border: 2px #fff solid;
+   border: 1px #fff solid;
+   border-radius: 50%;
    list-style: none;
    cursor: pointer;
    box-shadow: 1px #ccc:
