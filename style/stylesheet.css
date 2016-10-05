@@ -98,9 +98,10 @@ body{
    width: 15px;
    height: 15px;
    margin: 5px 5px;
-   color:#D3D6D0;
+   border: 2px #fff solid;
    list-style: none;
    cursor: pointer;
+   box-shadow: 1px #ccc:
 }
 .slider-controls ul li.current{
    background-color: #FFB127;
