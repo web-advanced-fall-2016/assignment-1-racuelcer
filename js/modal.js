@@ -6,7 +6,7 @@ for(let i=0; i < regions.length; i++){
 }
 
 function openReg(evnt){
-  let reg = this.parentNode.parentNode.querySelector('.ventana');
+  let reg = this.parentNode.querySelector('.ventana');
   reg.style.display = "inline-block";
 }
 
@@ -27,9 +27,8 @@ for(let i=0; i < modalBack.length; i++){
 }
 
 function closeWindow(evnt) {
-  let p = this.parentNode.querySelector('.ventana');
+  let p = this.parentNode.parentNode.parentNode.querySelector('.ventana');
   p.style.display = "none";
-  console.log(evnt.target);
 }
 
 
