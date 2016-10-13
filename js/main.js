@@ -5,6 +5,7 @@ window.onload = function() {
 		touchTransitionTime:300
 	};
 	var slidersElements = document.querySelectorAll('.slider');
+	console.log(slidersElements)
 
 	for(var i = 0 ; i < slidersElements.length ; i++) {
 		sliders.push( new simpleCarousel(i,slidersElements[i],options) );
@@ -14,11 +15,3 @@ window.onload = function() {
 	}
 }
 
-function showFrontLayer() {
-  document.getElementById('bg_mask').style.visibility='visible';
-  document.getElementById('frontlayer').style.visibility='visible';
-}
-function hideFrontLayer() {
-  document.getElementById('bg_mask').style.visibility='hidden';
-  document.getElementById('frontlayer').style.visibility='hidden';
-}

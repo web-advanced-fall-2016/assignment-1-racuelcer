@@ -1,12 +1,11 @@
 function simpleCarousel(id,carouselElement, options){
 	this.id = id;
 	if ( (function(){
-		//validate options
 		return true;
 	})(options) ){
 		this.options = options;
 	}else{
-		this.options = {// set defaults
+		this.options = {
 			transitionTime : 800,
 			touchTransitionTime : 300
 		};
@@ -26,7 +25,16 @@ function simpleCarousel(id,carouselElement, options){
 }
 
 simpleCarousel.prototype.initialize= function(){
+	this.slides = [];
+	this.sliderFrame = this.carousel.querySelector('.slider-frame');
+	this.sliderContentHolder = this.sliderFrame.querySelector('.slider-content');
+	this.sliderFrameWidth = this.sliderFrame.clientWidth;
+	this.currentSlideIndex = 0;
 
+	this.isLongTouch = 0;
+	this.touchStartPosition = {};
+	this.touchLatestPosition = {};
+	this.dragDistance = {};
 	if( this.evaluateSlides() > 0 ){
 		this.registerClickHandlers();
 		this.registerTouchHandlers();
@@ -41,6 +49,7 @@ simpleCarousel.prototype.evaluateSlides = function(){
 	var self = this;
 
 	var slideElements = this.sliderFrame.querySelectorAll(' .slider-content > img');
+	console.log(slideElements)
 	var sliderControlsListElement = this.carousel.querySelector('.slider-controls > ul');
 	sliderControlsListElement.innerHTML = "";
 
@@ -125,6 +134,7 @@ simpleCarousel.prototype.moveTouch = function(evnt){
 simpleCarousel.prototype.endTouch = function(){
 	var self = this;
 	var nextIndex = this.currentSlideIndex;
+	console.log(this)
 	if(Math.abs(this.dragDistance.x) > this.sliderFrameWidth/2 || this.isLongTouch === false) {
 		if(this.dragDistance.x > 0 &&  this.currentSlideIndex > 0) {
 			nextIndex = this.currentSlideIndex - 1;
@@ -151,5 +161,6 @@ simpleCarousel.prototype.moveToIndex = function(nextIndex){
 		self.slides[nextIndex].c.classList.add('current');
 		self.currentSlideIndex= nextIndex;
 	},this.options.transitionTime);
+	
 	this.sliderContentHolder.style.transform = `translateX(-${nextIndex*sliderWidth}px)`;
 };
