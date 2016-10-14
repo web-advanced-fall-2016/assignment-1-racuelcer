@@ -1,46 +1,31 @@
+// find the thumbnails in the document
+// 
+// add a click eventlistener 
+// identify the information box
+// when the thumbnail is click open the information box
+// add a keypress eventlistener
+// if the keypress is esc 
+//close the box 
 
-let regions = document.querySelectorAll('.container .picture');
+let pic = document.querySelectorAll (".picture");
 
-for(let i=0; i < regions.length; i++){
-  regions[i].addEventListener("click", openReg, false);
+for (i=0; i<pic.length; i++){
+  pic[i].addEventListener("click",openbox);
 }
 
-function openReg(evnt){
-  let reg = this.parentNode.querySelector('.ventana');
-  reg.style.display = "inline-block";
+function openbox(){
+ let v =  document.querySelector (".ventana");
+ v.style.display = "inline";
 }
 
-let close = document.querySelectorAll('.container .close');
+let c = document.addEventListener("keydown", closebox);
 
-for(let i=0; i < close.length; i++) {
-  close[i].addEventListener("click", closeReg, false);
-}
-
-function closeReg(evnt){
-  let c = this.parentNode.parentNode.parentNode.querySelector('.ventana');
-  c.style.display = "none";
-}
-let modalBack = document.querySelectorAll('.container .ventana');
-
-for(let i=0; i < modalBack.length; i++){
-  modalBack[i].addEventListener("click", closeWindow, false);
-}
-
-function closeWindow(evnt) {
-  let p = this.parentNode.parentNode.querySelector('.ventana');
-  p.style.display = "none";
-}
-
-
-document.addEventListener("keydown", closeModal, false);
-
-function closeModal(evnt){
-  if(evnt.keyCode == 27){
-  let close = document.querySelectorAll('.ventana');
-  for(let i = 0; i < close.length; i++){
-    close[i].style.display = "none";
-    }
+function closebox(e){
+  if(e.keyCode == 27){
+    let v =  document.querySelector (".ventana");
+    v.style.display = "none";
   }
+  
 }
 
 
